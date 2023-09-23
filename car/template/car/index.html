@@ -1,3 +1,5 @@
+{% extends 'car/base.html' %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +8,9 @@
     <title>This is Emon.car</title>
 </head>
 <body>
+    {% block body %}
     <h1>Welcome to Emon.Car Page</h1>
+    {{variable}}
+    {% endblock %}
 </body>
 </html>

@@ -12,7 +12,7 @@ def index(request):
 
 
 def about(request):
-    return render(request, "car/about.html")
+    return render(request, "car/about.html",)
 
 def Add_car(request):
     return render(request,"car/add-car.html")

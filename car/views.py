@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse
+from car.models import Contact
 
 # Create your views here.
 
@@ -18,5 +19,14 @@ def Add_car(request):
     return render(request,"car/add-car.html")
 
 def contact(request):
+    if request.method == "POST":
+        first_name = request.POST.get("first_name")
+        last_name = request.POST.get("last_name")
+        email = request.POST.get("email")
+        phone = request.POST.get("phone")
+        desc = request.POST.get("desc")
+        contact = Contact(first_name=first_name, last_name=last_name, email=email, phone=phone, desc=desc)
+        contact.save()
+
     return render(request,"car/contact.html")
 

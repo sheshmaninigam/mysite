@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from car.models import Contact
 from car.models import Addcar
 from car.forms import Addcar_Form
+from django.contrib import messages
 
 # Create your views here.
 
@@ -39,6 +40,9 @@ def contact(request):
         desc = request.POST.get("desc")
         contact = Contact(first_name=first_name, last_name=last_name, email=email, phone=phone, desc=desc)
         contact.save()
-
+        messages.success(
+            request,
+            "Your message has been Sent"
+        )
     return render(request,"car/contact.html")
 

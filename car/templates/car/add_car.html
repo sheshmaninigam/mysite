@@ -1,0 +1,28 @@
+{% extends 'car/base.html' %}
+    
+{% block body %}
+<div class="container" style="text-align: center;">
+<form method="POST">
+    {% csrf_token %}
+    <label>Car Code: </label><br>
+    {{ form.car_code }}<br>
+    <br><label>Name: </label><br>
+    {{ form.car_person_name }}<br>
+    <br><label>Car Name: </label><br>
+    {{ form.car_name }}<br>
+    <br><label>Car Model: </label><br>
+    {{ form.car_model }}<br>
+    <br><label>Car Price: </label><br>
+    {{ form.car_price }}<br>Rs
+    <br><label>Car Image: </label><br>
+    {{ form.car_image }}<br><br>
+    <br><label> Car Description: </label><br>
+    {{ form.car_desc }}<br>
+    <button type="submit">Save</button>
+</form>
+</div>
+
+{% endblock %}
+
+
+  

@@ -14,20 +14,20 @@
 </head>
 <body>
     <nav class="navbar navbar-dark" style="background-color: rgba(255, 3, 3, 0.851);">
-        <a href="{% url 'index' %}" class="navbar-brand">
+        <a href="{% url 'car:index' %}" class="navbar-brand">
             Emon
         </a>
         <div class="navbar" >
-            <a href="{% url 'Add-car' %}" class="nav-item nav-link btn btn-dark" style="background-color: white;color:black;">
+            <a href="{% url 'car:Add_car' %}" class="nav-item nav-link btn btn-dark" style="background-color: white;color:black;">
                 Add-car
             </a>
         <div class="navbar">
-            <a href="{% url 'about' %}" class="nav-item nav-link btn btn-dark"style="background-color: white;color:black;">
+            <a href="{% url 'car:about' %}" class="nav-item nav-link btn btn-dark"style="background-color: white;color:black;">
                 About
             </a>
         </div>
         <div class="navbar">
-            <a href="{% url 'contact' %}" class="nav-item nav-link btn-dark"style="background-color: white;color:black;">
+            <a href="{% url 'car:contact' %}" class="nav-item nav-link btn-dark"style="background-color: white;color:black;">
                 Contact
             </a>
         </div>

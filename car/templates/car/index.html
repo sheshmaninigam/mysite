@@ -25,6 +25,41 @@
         </div>
       </div>
     </div>
+    {% for Addcar in Addlist %}
+    <div class="row mb-5">
+      <div class="col-md-3 offset-md-2">
+          <img src="{{ Addcar.car_image }}" class="card" height="135px" width="230px">
+      </div>
+      <div class="col-md-4">
+          <h3 style="font-size: 1.5rem;">
+              {{ Addcar.car_name }}
+          </h3>
+          <h3 style="font-size: 1.5rem;">
+              {{ Addcar.car_person_name }}
+          </h3>
+          <h3 style="font-size: 1.5rem;">
+              {{ Addcar.car_model }}
+          </h3>
+          <h5 style="font-size: italic;
+          font-size: 1rem;
+          ">
+              {{ Addcar.car_desc |  truncatewords:6}}
+          </h5>
+          <h6>
+              Rs. {{ Addcar.car_price}}
+          </h6>
+          <h6
+          style="font-size: italic;"
+          >
+          added by superuser: admin
+          </h6>
+      </div>
+      </div>
+  </div>
+
+
+
+    {%  endfor %}
     {% endblock %}
 </body>
 </html>

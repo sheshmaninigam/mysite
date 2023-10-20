@@ -18,17 +18,30 @@
             Emon
         </a>
         <div class="navbar" >
+            {% if user.is_authenticated %}
             <a href="{% url 'car:Add_car' %}" class="nav-item nav-link btn btn-dark" style="background-color: white;color:black;">
                 Add-car
             </a>
-        <div class="navbar">
-            <a href="{% url 'car:about' %}" class="nav-item nav-link btn btn-dark"style="background-color: white;color:black;">
+            <a href="{% url 'car:about' %}" class="nav-item nav-link btn btn-dark" style="background-color: white;color:black;">
                 About
             </a>
-        </div>
-        <div class="navbar">
-            <a href="{% url 'car:contact' %}" class="nav-item nav-link btn-dark"style="background-color: white;color:black;">
+            <a href="{% url 'car:contact' %}" class="nav-item nav-link btn-dark" style="background-color: white;color:black;">
                 Contact
+            </a>
+
+            <a href="{% url 'profile' %}" class="nav-item nav-link btn-dark" style="background-color: white;color:black;">
+                Profile
+            </a>
+            <a href="{% url 'logout' %}" class="nav-item nav-link btn-dark" style="background-color: white;color:black;">
+                Logout
+            </a>
+            {% else %}
+            <a href="{% url 'login' %}" class="nav-item nav-link btn-dark" style="background-color: white;color:black;">
+                Login
+            </a>
+            <a href="{% url 'signup' %}" class="nav-item nav-link btn-dark" style="background-color: white;color:black;">
+                Sign Up
+            {% endif %}
             </a>
         </div>
     </nav>

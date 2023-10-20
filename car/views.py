@@ -45,4 +45,3 @@ def contact(request):
             "Your message has been Sent"
         )
     return render(request,"car/contact.html")
-

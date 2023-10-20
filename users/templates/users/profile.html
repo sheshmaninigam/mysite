@@ -1,0 +1,19 @@
+{% extends "car/base.html" %}
+
+
+{% block body %}
+<div class="container" style="text-align: center;">
+    <div class="">
+        <img height="100px" width="100px" src="{{ user.profile.image.url  }}">
+    </div><br>
+    <span>Name:- {{ user.first_name }}</span>
+    <span>{{ user.last_name }}</span><br>
+    <span>Email:- {{ user.email }}</span><br>
+    <p>Locaton:- {{ user.profile.location }}</p>
+
+</div>
+
+
+
+
+{% endblock %}

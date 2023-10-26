@@ -1,0 +1,43 @@
+{% extends "car/base.html" %}
+
+
+
+{% block body %}
+
+<div class="container">
+    <div class="row my-4">
+        <div class="col-md-2 offset-md-1">
+            <img 
+            height="150px"
+            width="250px"
+            class="card"
+            src="{{ car.car_image}}"
+            >
+        </div>
+        <div class="col-md-4 offset-md-1">
+            <h1 
+            style="font-size: 2.3rem;"
+            >
+                Brand:-{{ car.car_name}}
+            </h1>
+            <h1 style="font-size: 1.3rem;">
+                Name:-{{ car.car_person_name}}
+            </h1>
+            <h1 style="font-size: 1.3rem;">
+                Model:-{{ car.car_model}}
+            </h1>
+            <h2
+            style="font-size: 1.3rem;
+            text-align: justify;
+            "
+            >
+                Desc:-{{ car.car_desc}}
+            </h2>
+            <h3>
+                Rs.{{ car.car_price}}
+            </h3>
+        </div>
+    <div class="col-md-3 offset-md-1">
+</div>
+
+{% endblock %}

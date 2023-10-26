@@ -1,0 +1,15 @@
+{% extends "car/base.html" %}
+
+
+{% block body %}
+
+{% if search  %}
+<p>hii</p>
+    {% for searchs in search %}
+        {{ searchs.car_name }}<br>
+        {{ searchs.car_ }}
+    {% endfor %}
+
+{% endif %}
+
+{% endblock %}

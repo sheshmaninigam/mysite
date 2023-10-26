@@ -4,29 +4,33 @@ from django.contrib import messages
 from users.forms import SignUpForms
 
 
+
 # Create your views here.
 
 
 
 def signup(request):
-    if request.method =="POST":
-       form = SignUpForms(request.POST)
-       
-       if form.is_valid():
-         username = form.cleaned_data.get("username")
-         messages.success(
-            request,
-            f"welcome {username}, you have been Successfully Signup"
-         )
-         form.save()
-         return redirect ("login")
+  if request.method =="POST":
+    form = SignUpForms(request.POST)
+
+    if form.is_valid():
+      username = form.cleaned_data.get("username")
+      messages.success(
+        request,
+        f"welcome {username}, you have been Successfully Signup"
+      )
+      form.save()
+      return redirect ("login")
     
-    else:
-       form = SignUpForms()
-       context = {
-         "form": form
-       }
-       return render(request, "users/sigup.html",context)
+  else:
+      form = SignUpForms()
+      context ={
+        "form": form
+      }
+      
+      return render(request, "users/signup.html",context)
+   
+
  
 
 def login_view(request):

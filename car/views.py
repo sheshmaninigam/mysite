@@ -13,6 +13,14 @@ def index(request):
     }
     return render(request, "car/index.html",context)
 
+def detail_c(request,car_id):
+
+    car = Addcar.objects.get(pk = car_id)
+
+    context ={
+        "car":car
+    }
+    return render(request,"car/detail.html",context)
 
 def about(request):
     return render(request, "car/about.html",)
@@ -45,3 +53,21 @@ def contact(request):
             "Your message has been Sent"
         )
     return render(request,"car/contact.html")
+
+
+def search_views(request):
+    if request.method == "GET":
+        searchfor= request.GET.get("search")
+        search = Addcar.objects.filter(car_name__contains=searchfor)
+
+        # search = Addcar.objects.all()
+        
+        context = {
+           "search":search
+        }
+       
+    return render(request,"car/searchbar.html",context)
+
+
+
+

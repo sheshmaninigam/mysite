@@ -27,7 +27,7 @@
     </div>
     {% for Addcar in Addlist %}
     {% if user.is_authenticated %}
-    <a href="{% url 'car:detail_c' Addcar.id %}" style="width:100px;text-decoration: none;color: black;">
+    <a href="{% url 'car:detail' Addcar.id %}" style="width:100px;text-decoration: none;color: black;">
     {% endif %}
     <div class="row mb-5">
       

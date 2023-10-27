@@ -13,7 +13,7 @@ def index(request):
     }
     return render(request, "car/index.html",context)
 
-def detail_c(request,car_id):
+def detail(request,car_id):
 
     car = Addcar.objects.get(pk = car_id)
 
@@ -55,15 +55,15 @@ def contact(request):
     return render(request,"car/contact.html")
 
 
-def search_views(request):
+def search_views(request,):
     if request.method == "GET":
         searchfor= request.GET.get("search")
         search = Addcar.objects.filter(car_name__contains=searchfor)
-
         # search = Addcar.objects.all()
         
         context = {
-           "search":search
+           "search":search,
+          
         }
        
     return render(request,"car/searchbar.html",context)

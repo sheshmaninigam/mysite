@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from users.forms import SignUpForms
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -74,5 +75,6 @@ def logout_view(request):
    logout(request)
    return redirect("car:index")
 
+@login_required
 def profile_views(request):
    return render(request, "users/profile.html")

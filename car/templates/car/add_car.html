@@ -1,7 +1,7 @@
 {% extends 'car/base.html' %}
     
 {% block body %}
-<div class="container" style="text-align: center;">
+<div class="container my-4" style="text-align: center;">
 <form method="POST">
     {% csrf_token %}
     <label>Car Code: </label><br>
@@ -19,6 +19,7 @@
     <br><label> Car Description: </label><br>
     {{ form.car_desc }}<br>
     <button type="submit">Save</button>
+    <br><br>
 </form>
 </div>
 

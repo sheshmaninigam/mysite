@@ -25,6 +25,7 @@ admin.site.site_header = "EMON Admin"
 admin.site.site_title = "EMON Admin Portal"
 admin.site.index_title = "Welcome to Emon Admin Portal"
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("car/",include("car.urls")),
@@ -32,6 +33,8 @@ urlpatterns = [
     path("login/",views.login_view,name="login"),
     path("logout/",views.logout_view,name="logout"),
     path("profile/",views.profile_views,name="profile"),
+    path("profile_edit/<int:id>/",views.profile_edit,name="profile_edit"),
+#     path('<int:pk>/',views.ProfileUpdateView.as_view, name='update'),
 ]
 
 urlpatterns += [] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -4,7 +4,7 @@
 
 {% block body %}
 
-<div class="container">
+<div class="container" style="color: white;font-variant: small-caps;">
     <div class="row my-4">
         <div class="col-md-2 offset-md-1">
             <img 
@@ -18,13 +18,13 @@
             <h1 
             style="font-size: 2.3rem;"
             >
-                Brand:- {{ car.car_name}}
-            </h1>
-            <h1 style="font-size: 1.3rem;">
-                Name:- {{ car.car_person_name}}
+                Car:- {{ car.car_name}}
             </h1>
             <h1 style="font-size: 1.3rem;">
                 Model:- {{ car.car_model}}
+            </h1>
+            <h1 style="font-size: 1.3rem;">
+                Name:- {{ car.car_person_name}}
             </h1>
             <h2
             style="font-size: 1.3rem;
@@ -38,6 +38,22 @@
             </h3>
         </div>
     <div class="col-md-3 offset-md-1">
+
+               <a href="{% url 'car:update_views' car.id %}"
+                style="width: 80px;font-variant: small-caps;border: 2px solid black;box-shadow: 2px 2px  black;"
+                class="btn btn-warning">
+                Edit
+                </a>
+                <a href="{% url 'car:delete_views' car.id %}"
+                style="width: 80px;font-variant: small-caps;border: 2px solid black;box-shadow: 2px 2px  black;"
+                class="btn btn-danger">
+                Delete
+                </a>
+                <a href="{% url 'car:index' %}"
+                style="width: 80px;font-variant: small-caps;border: 2px solid black;box-shadow: 2px 2px  black;"
+                class="btn btn-success">
+                Back
+                </a>
 </div>
 
 {% endblock %}

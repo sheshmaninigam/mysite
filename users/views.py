@@ -2,7 +2,11 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from users.forms import SignUpForms
+from users.models import Profile
 from django.contrib.auth.decorators import login_required
+from django.views.generic import UpdateView
+from django.urls import reverse_lazy
+from users.forms import ProfileForm
 
 
 
@@ -75,6 +79,31 @@ def logout_view(request):
    logout(request)
    return redirect("car:index")
 
-@login_required
+@login_required(login_url="login")
 def profile_views(request):
    return render(request, "users/profile.html")
+
+def profile_edit(request,id):
+  profile = Profile.objects.get(pk=id)
+  form = ProfileForm(request.POST or None,request.FILES, instance=profile)
+
+  context ={
+    "form":form
+  }
+
+  if form.is_valid():
+    profile.save()
+    messages.success(
+      request,
+      f"Your profile {request.user.username}, is Successfully Change"
+    )
+    return redirect("car:index")
+
+  return render(request,"users/profile_edit.html",context)
+
+
+# class ProfileUpdateView(UpdateView):
+#   model = Profile
+#   template_name = 'users/profile_edit.html'
+#   fields = ['image','location']
+#   success_url = reverse_lazy('users:profile')

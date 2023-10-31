@@ -2,15 +2,22 @@
 
 
 {% block body %}
-<div class="container my-4" style="text-align: center;">
+<div class="container my-4" style="text-align: center; background-color: rgb(233, 34, 34);color: rgb(251, 251, 251);
+font-variant: small-caps;width: 300px ;border: 2px solid rgb(25, 24, 24);box-shadow: 2px 2px  black;">
     <div class="">
-        <img height="100px" width="100px" src="{{ user.profile.image.url  }}">
+        <img height="100px" width="100px" style="  border: 2px solid rgb(25, 24, 24);box-shadow: 2px 2px  black;
+        border-radius: 30px;" src="{{ user.profile.image.url  }}">
     </div><br>
     <span>Name:- {{ user.first_name }}</span>
     <span>{{ user.last_name }}</span><br>
     <span>Email:- {{ user.email }}</span><br>
     <p>Locaton:- {{ user.profile.location }}</p>
-
+    <div class="col-md-3 offset-md-1" style="text-align: center;">
+             <a href="{% url 'profile_edit' user.profile.id %}"
+                style="width: 80px;font-variant: small-caps;border: 2px solid black;box-shadow: 2px 2px  black;"
+                class="btn btn-warning">
+                Edit
+             </a>
 </div>
 
 

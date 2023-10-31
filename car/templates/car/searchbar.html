@@ -20,27 +20,29 @@
 
 {% if search  %}
     {% for searchs in search %}
+    <div style="color: white;">
     {% if user.is_authenticated %}
-    <a href="{% url 'car:detail' searchs.id %}" style="width:100px;text-decoration: none;color: black;">
+    <a href="{% url 'car:detail' searchs.id %}" style="width:100px;text-decoration: none;color: white;">
     {% endif %}
-    <div class="row mb-5">
+    <div class="row mb-5" style="font-variant: small-caps;" >
         <div class="col-md-3 offset-md-3">
         <img src="{{ searchs.car_image }}" class="card" height="135px" width="230px">
         </div>
         <div class="col-md-4">
             <h3 style="font-size: 1.5rem;">
-                {{ searchs.car_name }}
+                Car:- {{ searchs.car_name }}
             </h3>
             <h3 style="font-size: 1.5rem;">
-                {{ searchs.car_model }}
+                Model:- {{ searchs.car_model }}
             </h3>
             <h3 style="font-size: 1.5rem;">
-                {{ searchs.car_price }}
+                Rs. {{ searchs.car_price }}
             </h3>
         </div>
 
     </div>
     </a>
+    </div>
     {% endfor %}
 
 {% endif %}

@@ -1,0 +1,16 @@
+{% extends "car/base.html" %}
+
+{% block body %}
+<div class="container my-4" style="text-align: center;color: white;background-color: rgb(230, 52, 16) ;width: 300px;font-variant: small-caps;border: 2px solid black;box-shadow: 2px 2px  black;">
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <br><span style="color: rgb(239, 232, 232);text-decoration: none;">Image:- {{ form.image }}</span><br>
+    <br><span>Location:- {{ form.location }}</span><br>
+   
+    <br><br><button type="submit">save</button>
+    
+</form> 
+</div>
+
+
+{% endblock %}

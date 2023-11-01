@@ -3,15 +3,21 @@
 {% block body %}
 
 
-<div class="container" style="text-align: center;">
+<div class="container my-4" style="text-align: center;width: 310px;justify-content: center;
+align-items: center;
+background-color: rgb(255, 0, 157);
+;border: 2px solid black;box-shadow: 2px 2px  black;font-variant: small-caps;
+color: rgb(240, 233, 233);">
     <form method="post">
+        <h1 style="background-color:rgb(243, 243, 14);color: black;font-variant: small-caps;border: 2px solid black;box-shadow: 2px 2px  black;">Login</h1><br>
         {% csrf_token %}
         <label for="username">Username:</label><br>
         <br><input type="text" id= "username" name="username"><br>
         <br><label for="password">Password:</label><br>
         <br><input type="password" id= "password" name="password"><br>
         
-        <br><button type="submit">Login</button>
+        <br><button class="btn-success" type="submit" style="font-variant: small-caps;border: 2px solid black;box-shadow: 2px 2px  black;">Login</button>
     </form>
 </div>
+
 {%  endblock %}

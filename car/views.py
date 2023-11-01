@@ -3,6 +3,7 @@ from car.models import Contact
 from car.models import Addcar
 from car.forms import Addcar_Form
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -25,6 +26,7 @@ def detail(request,car_id):
 def about(request):
     return render(request, "car/about.html",)
 
+@login_required(login_url="login")
 def Add_car(request):
     form = Addcar_Form(request.POST or None)
     
@@ -36,6 +38,36 @@ def Add_car(request):
         "form":form
     }
     return render(request,"car/add_car.html",context)
+
+
+
+def update_views(request,id):
+    addcar = Addcar.objects.get(pk=id)
+    form = Addcar_Form(request.POST or None, instance=addcar)
+
+    context={
+        "form":form
+    }
+
+    if form.is_valid():
+        form.save()
+        return redirect("car:index")
+    
+    return render(request, "car/update_addcar.html",context)
+
+
+def delete_views(request,id):
+    car = Addcar.objects.get(pk=id)
+
+    context={
+        "car":car
+    }
+
+    if request.method == "POST":
+        car.delete()
+        return redirect("car:index")
+    
+    return render(request,"car/delete_car.html",context)
 
 
 
@@ -59,7 +91,6 @@ def search_views(request,):
     if request.method == "GET":
         searchfor= request.GET.get("search")
         search = Addcar.objects.filter(car_name__contains=searchfor)
-        # search = Addcar.objects.all()
         
         context = {
            "search":search,

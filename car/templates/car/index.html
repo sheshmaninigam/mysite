@@ -13,7 +13,7 @@
     <div class="container my-4">
       <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-          <div class="carousel-item active">
+          <div class="carousel-item active" style="border: 2px solid rgb(247, 244, 244);">
             <img src="https://source.unsplash.com/1600x600/?sportcar,lamborghini" class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item">
@@ -26,28 +26,29 @@
       </div>
     </div>
     {% for Addcar in Addlist %}
+    <div style="color: white;">
     {% if user.is_authenticated %}
-    <a href="{% url 'car:detail' Addcar.id %}" style="width:100px;text-decoration: none;color: black;">
+    <a href="{% url 'car:detail' Addcar.id %}" style="width:100px;text-decoration: none;color: rgb(243, 239, 239);">
     {% endif %}
-    <div class="row mb-5">
+    <div class="row mb-5" style="font-variant: small-caps;">
       
         <div class="col-md-3 offset-md-3">
             <img src="{{ Addcar.car_image }}" class="card" height="135px" width="230px">
         </div>
         <div class="col-md-4">
             <h3 style="font-size: 1.5rem;">
-                {{ Addcar.car_name }}
+                Car:- {{ Addcar.car_name }}
             </h3>
             <h3 style="font-size: 1.5rem;">
-                {{ Addcar.car_person_name }}
+              Model:- {{ Addcar.car_model }}
             </h3>
             <h3 style="font-size: 1.5rem;">
-                {{ Addcar.car_model }}
+                Name:- {{ Addcar.car_person_name }}
             </h3>
             <h5 style="font-size: italic;
             font-size: 1rem;
             ">
-                {{ Addcar.car_desc |  truncatewords:6}}
+                desc:- {{ Addcar.car_desc |  truncatewords:6}}
             </h5>
             <h6>
                 Rs. {{ Addcar.car_price}}
@@ -61,6 +62,7 @@
         </div>
       </div>
     </a>
+  </div>
 
 
 

@@ -3,28 +3,46 @@
 
 
 {% block body %}
-
-<div class="container">
-    <div class="row my-4">
-        <div class="col-md-2 offset-md-1">
-            <img 
-            height="150px"
-            width="250px"
-            class="card"
-            src="{{ car.car_image}}"
-            >
+    <div id="carouselExampleIndicators" class="carousel slide  my-4 col-md-5 offset-md-3" data-bs-ride="carousel" height="400">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
+        <div class="carousel-inner" style="border: 2px solid rgb(3, 3, 3);">
+          <div class="carousel-item active">
+            <img src="{{ car.car_image }}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="https://hips.hearstapps.com/hmg-prod/images/2024-lamborghini-revuelto-127-641a1d518802b.jpg?crop=0.813xw:0.721xh;0.0994xw,0.128xh&resize=1200:*" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="https://images.pexels.com/photos/3729464/pexels-photo-3729464.jpeg?cs=srgb&dl=pexels-mike-bird-3729464.jpg&fm=jpg" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+<div class="container" style="color: white;font-variant: small-caps;">
+    <div class="row my-4">
         <div class="col-md-4 offset-md-1">
             <h1 
             style="font-size: 2.3rem;"
             >
-                Brand:- {{ car.car_name}}
-            </h1>
-            <h1 style="font-size: 1.3rem;">
-                Name:- {{ car.car_person_name}}
+                Car:- {{ car.car_name}}
             </h1>
             <h1 style="font-size: 1.3rem;">
                 Model:- {{ car.car_model}}
+            </h1>
+            <h1 style="font-size: 1.3rem;">
+                Name:- {{ car.car_person_name}}
             </h1>
             <h2
             style="font-size: 1.3rem;
@@ -38,6 +56,22 @@
             </h3>
         </div>
     <div class="col-md-3 offset-md-1">
+
+               <a href="{% url 'car:update_views' car.id %}"
+                style="width: 80px;font-variant: small-caps;border: 2px solid black;box-shadow: 2px 2px  black;"
+                class="btn btn-warning">
+                Edit
+                </a>
+                <a href="{% url 'car:delete_views' car.id %}"
+                style="width: 80px;font-variant: small-caps;border: 2px solid black;box-shadow: 2px 2px  black;"
+                class="btn btn-danger">
+                Delete
+                </a>
+                <a href="{% url 'car:index' %}"
+                style="width: 80px;font-variant: small-caps;border: 2px solid black;box-shadow: 2px 2px  black;"
+                class="btn btn-success">
+                Back
+                </a>
 </div>
 
 {% endblock %}

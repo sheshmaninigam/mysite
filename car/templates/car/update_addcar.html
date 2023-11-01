@@ -1,0 +1,32 @@
+{% extends "car/base.html" %}
+
+{% block body %}
+<div class="container my-4" style="text-align: center;width: 350px;justify-content: center;
+align-items: center;
+background-color: rgba(106, 255, 0, 0.649);
+;border: 2px solid black;box-shadow: 2px 2px  black;font-variant: small-caps;
+color: rgb(252, 242, 242);">
+    <form method="POST">
+        <h1 style="background-color:rgba(14, 186, 243, 0.352);color: #fefdfd;font-variant: small-caps;border: 2px solid black;box-shadow: 2px 2px  black;">UPDATE-CAR</h1><br>
+        {% csrf_token %}
+        <label>Car Code: </label><br>
+        {{ form.car_code }}<br>
+        <br><label>Name: </label><br>
+        {{ form.car_person_name }}<br>
+        <br><label>Car Name: </label><br>
+        {{ form.car_name }}<br>
+        <br><label>Car Model: </label><br>
+        {{ form.car_model }}<br>
+        <br><label>Car Price: </label><br>
+        {{ form.car_price }}<br>Rs
+        <br><label>Car Image: </label><br>
+        {{ form.car_image }}<br><br>
+        <br><label> Car Description: </label><br>
+        {{ form.car_desc }}<br>
+        <button class="btn-danger" type="submit">Save</button>
+        <br><br>
+    </form>
+    </div>
+
+
+{% endblock %}

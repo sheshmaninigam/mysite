@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 
 
@@ -10,14 +10,17 @@ class Addcar(models.Model):
     car_model = models.CharField(max_length=100)
     car_price = models.IntegerField()
     car_desc = models.TextField()
-    car_image = models.CharField(
-        max_length=500,
-        default="https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg"
-    )
+    car_image = models.ImageField(default='car_image.jpg', upload_to='car_image')
+    car_image1 = models.ImageField(default='car_image.jpg', upload_to='car_image1')
+    car_image2 = models.ImageField(default='car_image.jpg', upload_to='car_image2')
+    car_image3 = models.ImageField(default='car_image.jpg', upload_to='car_image3')
+    car_image4 = models.ImageField(default='car_image.jpg', upload_to='car_image4')
+    car_image5 = models.ImageField(default='car_image.jpg', upload_to='car_image5')
 
     def __str__(self):
         return self.car_person_name
-
+    
+    
 class Contact(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)

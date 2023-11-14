@@ -4,4 +4,5 @@ from car.models import Contact, Addcar
 # Register your models here.
 admin.site.register(Contact)
 admin.site.register(Addcar)
+# admin.site.register(Image)
 

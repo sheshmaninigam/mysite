@@ -5,12 +5,13 @@ from car.forms import Addcar_Form
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
+
 # Create your views here.
 
 def index(request):
     Addlist = Addcar.objects.all()
     context={
-        "Addlist":Addlist
+        "Addlist":Addlist,
     }
     return render(request, "car/index.html",context)
 
@@ -28,11 +29,13 @@ def about(request):
 
 @login_required(login_url="login")
 def Add_car(request):
-    form = Addcar_Form(request.POST or None)
+    form = Addcar_Form(request.POST or None,request.FILES)
     
     if form.is_valid():
         form.save()
         return redirect("car:index")
+    else:
+        form = Addcar_Form(request.POST or None)
 
     context={
         "form":form
@@ -41,19 +44,46 @@ def Add_car(request):
 
 
 
-def update_views(request,id):
+def update_views(request, id):
     addcar = Addcar.objects.get(pk=id)
-    form = Addcar_Form(request.POST or None, instance=addcar)
+
+    if request.method == 'POST':
+        form = Addcar_Form(request.POST, request.FILES, instance=addcar)
+        if form.is_valid():
+            form.save()
+            messages.success(
+                request,
+                f"Your Car {request.user.username}, is Successfully Edit "
+            )
+            return redirect("car:index")
+    else:
+        form = Addcar_Form(instance=addcar)
+
+    context = {
+        "form": form
+    }
+
+    return render(request, "car/update_addcar.html", context)
+
+
+
+def update_image(request,id):
+    car = Addcar.objects.get(pk=id)
+
+    if request.method == "POST":
+        form = Addcar_Form(request.POST or None,request.FILES, instance=car)
+        if form.is_valid():
+            form.save()
+            return redirect("car:index")
+    
+    else:
+        form = Addcar_Form(instance=car)
 
     context={
         "form":form
     }
 
-    if form.is_valid():
-        form.save()
-        return redirect("car:index")
-    
-    return render(request, "car/update_addcar.html",context)
+    return render(request,"car/update_image.html",context)
 
 
 def delete_views(request,id):

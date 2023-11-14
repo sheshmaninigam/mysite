@@ -6,7 +6,7 @@ align-items: center;
 background-color: rgb(255, 166, 0);
 ;border: 2px solid black;box-shadow: 2px 2px  black;font-variant: small-caps;
 color: rgb(18, 17, 17);">
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
     <h1 style="background-color:rgb(186, 14, 243);color: #fefdfd;font-variant: small-caps;border: 2px solid black;box-shadow: 2px 2px  black;">ADD-CAR</h1><br>
     {% csrf_token %}
     <label>Car Code: </label><br>

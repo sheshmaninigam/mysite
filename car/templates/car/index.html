@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>This is Emon.car</title>
+    <title>Document</title>
 </head>
 <body>
     {% block body %}
@@ -33,7 +33,7 @@
     <div class="row mb-5" style="font-variant: small-caps;">
       
         <div class="col-md-3 offset-md-3">
-            <img src="{{ Addcar.car_image }}" class="card" height="135px" width="230px">
+            <img src="{{ Addcar.car_image.url }}" class="card" height="135px" width="230px">
         </div>
         <div class="col-md-4">
             <h3 style="font-size: 1.5rem;">
@@ -63,7 +63,6 @@
       </div>
     </a>
   </div>
-
 
 
     {%  endfor %}

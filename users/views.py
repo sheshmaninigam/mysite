@@ -85,19 +85,23 @@ def profile_views(request):
 
 def profile_edit(request,id):
   profile = Profile.objects.get(pk=id)
-  form = ProfileForm(request.POST or None,request.FILES, instance=profile)
-
-  context ={
-    "form":form
-  }
+  form = ProfileForm(request.POST or None, request.FILES, instance=profile)
 
   if form.is_valid():
-    profile.save()
+    form.save()
     messages.success(
       request,
       f"Your profile {request.user.username}, is Successfully Change"
     )
     return redirect("car:index")
+  
+  else:
+        form = ProfileForm(instance=profile)
+  
+  context = {
+    "form":form
+  }
+
 
   return render(request,"users/profile_edit.html",context)
 

@@ -1,14 +1,15 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator
+
 # Create your models here.
 
 
 class Addcar(models.Model):
-    car_code = models.IntegerField(default=100)
+    car_code = models.IntegerField(default=100,validators=[MinValueValidator(100)])
     car_person_name = models.CharField(default="ABC",max_length=100)
     car_name = models.CharField(max_length=100)
     car_model = models.CharField(max_length=100)
-    car_price = models.IntegerField()
+    car_price = models.IntegerField(validators=[MinValueValidator(0)])
     car_desc = models.TextField()
     car_image = models.ImageField(default='car_image.jpg', upload_to='car_image')
     car_image1 = models.ImageField(default='car_image.jpg', upload_to='car_image1')

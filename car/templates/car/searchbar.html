@@ -18,7 +18,11 @@
     </div>
   </div>
 
-{% if search  %}
+{% if no_results %}
+<div class="row mb-5" style="font-variant: small-caps;text-align: center;" >
+  <p><b style="color:black;background-color: white;">No results found for<h4>'{{ searchfor }}'</h4></b></p>
+</div>
+{% else %}
     {% for searchs in search %}
     <div style="color: white;">
     {% if user.is_authenticated %}

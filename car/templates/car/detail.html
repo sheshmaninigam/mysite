@@ -73,6 +73,7 @@
                 Rs. {{ car.car_price}}
             </h3>
         </div>
+    {% if car.car_person_name == request.user.username %}
     <div class="col-md-3 offset-md-1">
                <a href="{% url 'car:update_views' car.id %}"
                 style="width: 80px;font-variant: small-caps;border: 2px solid black;box-shadow: 2px 2px  black;"
@@ -89,6 +90,7 @@
                 class="btn btn-success">
                 Back
                 </a>
+   {% endif %}
 </div>
 
 {% endblock %}

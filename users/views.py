@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from users.forms import SignUpForms
@@ -10,31 +11,36 @@ from users.forms import ProfileForm
 
 
 
+
 # Create your views here.
 
 
 
 def signup(request):
-  if request.method =="POST":
-    form = SignUpForms(request.POST)
+  try:
+    if request.method =="POST":
+      form = SignUpForms(request.POST)
 
-    if form.is_valid():
-      username = form.cleaned_data.get("username")
-      messages.success(
-        request,
-        f"welcome {username}, you have been Successfully Signup"
-      )
-      form.save()
-      return redirect ("login")
-    
-  else:
-      form = SignUpForms()
-      context ={
-        "form": form
-      }
+      if form.is_valid():
+        username = form.cleaned_data.get("username")
+        messages.success(
+          request,
+          f"welcome {username}, you have been Successfully Signup"
+        )
+        form.save()
+        return redirect ("login")
       
-      return render(request, "users/signup.html",context)
+    else:
+        form = SignUpForms()
+        context ={
+          "form": form
+        }
+        
+        return render(request, "users/signup.html",context)
+    return HttpResponse(render(request,"users/signup.html",messages.success( request, "Invalid password, try again"),context))
    
+  except UnboundLocalError:
+     return render(request, "users/signup.html",{"form":form})
 
  
 
@@ -83,6 +89,7 @@ def logout_view(request):
 def profile_views(request):
    return render(request, "users/profile.html")
 
+@login_required(login_url="login")
 def profile_edit(request,id):
   profile = Profile.objects.get(pk=id)
   form = ProfileForm(request.POST or None, request.FILES, instance=profile)

@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 
+
 # Create your views here.
 
 def index(request):
@@ -30,9 +31,14 @@ def about(request):
 @login_required(login_url="login")
 def Add_car(request):
     form = Addcar_Form(request.POST or None,request.FILES)
-    
+
     if form.is_valid():
+        form.instance.car_person_name = request.user.username
         form.save()
+        messages.success(
+            request,
+            f"Your Car {request.user.username}, is Successfully Add"
+        )
         return redirect("car:index")
     else:
         form = Addcar_Form(request.POST or None)
@@ -117,15 +123,16 @@ def contact(request):
     return render(request,"car/contact.html")
 
 
-def search_views(request,):
+def search_views(request):
     if request.method == "GET":
         searchfor= request.GET.get("search")
-        search = Addcar.objects.filter(car_name__contains=searchfor)
+        search = Addcar.objects.filter(car_name__icontains=searchfor)
         
         context = {
            "search":search,
-          
+           "searchfor": searchfor,   
         }
+        context["no_results"] = not search.exists()
        
     return render(request,"car/searchbar.html",context)
 

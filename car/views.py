@@ -131,8 +131,8 @@ def search_views(request):
         context = {
            "search":search,
            "searchfor": searchfor,   
+           "no_results" : not search.exists(),
         }
-        context["no_results"] = not search.exists()
        
     return render(request,"car/searchbar.html",context)
 

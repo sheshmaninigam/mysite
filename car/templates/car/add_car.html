@@ -9,6 +9,7 @@ color: rgb(18, 17, 17);">
 <form method="POST" enctype="multipart/form-data">
     <h1 style="background-color:rgb(186, 14, 243);color: #fefdfd;font-variant: small-caps;border: 2px solid black;box-shadow: 2px 2px  black;">ADD-CAR</h1><br>
     {% csrf_token %}
+    <h5>No Negative(-) Number</h5>
     <label>Car Code: </label><br>
     {{ form.car_code }}<br>
     <br><label>Name: </label><br>
